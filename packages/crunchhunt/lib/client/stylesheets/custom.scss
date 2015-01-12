@@ -31,9 +31,7 @@ $medium-break: 50em;
 .search-field{
 border: 1px solid rgba(0,0,0,0.2) !important;
 }
-#at-facebook{
-display:none !important;
-}
+
 
 .post-body{
   overflow: hidden;
@@ -75,7 +73,7 @@ display:none !important;
   position: relative;
   overflow: hidden;
   text-align: center;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: normal;
   span{
     position: relative;
@@ -96,4 +94,7 @@ display:none !important;
     width: 100%;
     z-index: 10;
   }
+}
+.at-sep, .at-pwd-form, #at-facebook{
+  display:none !important;
 }
