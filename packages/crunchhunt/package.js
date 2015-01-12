@@ -57,6 +57,8 @@ Package.onUse(function (api) {
   // client
 
   api.add_files([
+    'lib/client/templates/about_link.html',
+    'lib/client/templates/about_page.html',
     'lib/client/templates/custom_post_info.html',
     'lib/client/templates/custom_post_avatars.html',
     'lib/client/templates/custom_post_shares.html',

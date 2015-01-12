@@ -9,10 +9,10 @@ var addJob = function () {
   SyncedCron.add({
     name: 'Get article shares',
     schedule: function(parser) {
-      return parser.text('every 1 minutes');
+      return parser.text('every 15 minutes');
     }, 
     job: function() {
-      getShares();
+      getLast3DaysPostsShares();
     }
   });
 }

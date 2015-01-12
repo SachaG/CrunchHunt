@@ -1,3 +1,17 @@
+$small-break: 30em;
+$medium-break: 50em;
+
+@mixin small(){
+  @media screen and (max-width: $small-break) {
+    @content;
+  }
+}
+@mixin medium-large(){
+  @media screen and (min-width: 50em) {
+    @content;
+  }
+}
+
 .post-avatars{
   .post-commenters{
     border-left: none;
@@ -13,3 +27,39 @@
     line-height: 1;
   }
 }
+
+.search-field{
+border: 1px solid rgba(0,0,0,0.2) !important;
+}
+#at-facebook{
+display:none !important;
+}
+
+.post-body{
+  overflow: hidden;
+  p{
+    @include small{
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    @include medium-large{
+      font-size: 18px;
+      line-height: 1.7;
+    }
+  }
+  p img{
+    @include small{
+      margin-bottom: 10px;
+    }
+    @include medium-large{
+      float: left;
+      max-width: 460px;
+      margin-right: 20px;
+    }
+  }
+  div{
+    display: none; // hide the stupid feedburner links
+  }
+}
+
+
