@@ -79,3 +79,10 @@ primaryNav.push({
   template: 'aboutLink',
   order: 0
 });
+
+// Add tagline template to hero zone
+
+heroModules.push({
+  template: 'tagline',
+  order: 0
+});

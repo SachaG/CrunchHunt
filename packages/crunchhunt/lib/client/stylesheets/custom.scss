@@ -37,7 +37,7 @@ display:none !important;
 
 .post-body{
   overflow: hidden;
-  p{
+  p, ul, ol{
     @include small{
       font-size: 16px;
       line-height: 1.5;
@@ -61,5 +61,39 @@ display:none !important;
     display: none; // hide the stupid feedburner links
   }
 }
+.about{
+  max-width: 700px;
+  margin: 0 auto;
+  @include medium-large{
+    padding: 40px;
+  }
+}
 
-
+.tagline{
+  text-align: center;
+  margin: 30px 0 20px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  font-size: 20px;
+  font-weight: normal;
+  span{
+    position: relative;
+    display: inline-block;
+    background: #EEEEEE;
+    margin: 0 auto;
+    z-index: 100;
+    padding: 0 15px;
+  }
+  &:after{
+    position: absolute;
+    content: " ";
+    display: block;
+    top: 50%;
+    left: 0px;
+    height: 1px;
+    background: rgba(0,0,0,0.2);
+    width: 100%;
+    z-index: 10;
+  }
+}
