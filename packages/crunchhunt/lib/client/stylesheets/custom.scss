@@ -21,7 +21,12 @@ $medium-break: 50em;
 .post-shares{
   text-align: center;
   .shares-count{
-    font-size: 20px;
+    @include small{
+      font-size: 18px;
+    }
+    @include medium-large{
+      font-size: 20px;
+    }
     font-weight: bold;
     line-height: 1;
   }
@@ -117,4 +122,13 @@ border: 1px solid rgba(0,0,0,0.2) !important;
 }
 .at-sep, .at-pwd-form, #at-facebook{
   display:none !important;
+}
+
+.toggle-actions-link{
+  display: none !important;
+}
+.posts-day-heading{
+  @include small{
+    text-align: center;
+  }
 }
