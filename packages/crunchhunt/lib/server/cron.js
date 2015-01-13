@@ -18,5 +18,7 @@ var addJob = function () {
 }
 
 Meteor.startup(function () {
-  addJob();
+  // do not run job locally to avoid going over API quota
+  if (Meteor.absoluteUrl().indexOf('localhost') == -1)
+    addJob();
 });
