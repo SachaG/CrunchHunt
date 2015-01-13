@@ -9,7 +9,7 @@ var addJob = function () {
   SyncedCron.add({
     name: 'Get article shares',
     schedule: function(parser) {
-      return parser.text('every 15 minutes');
+      return parser.text('every 10 minutes');
     }, 
     job: function() {
       getLast3DaysPostsShares();
@@ -18,5 +18,5 @@ var addJob = function () {
 }
 
 Meteor.startup(function () {
-  // addJob();
+  addJob();
 });

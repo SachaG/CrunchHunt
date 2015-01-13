@@ -1,9 +1,3 @@
-// Global Function
-
-myFunction = function (a, b) {
-  return a + b;
-}
-
 // remove views menu
 primaryNav = _.reject(primaryNav, function (item){
   return item.template == "viewsMenu";
