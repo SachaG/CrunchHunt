@@ -1,0 +1,134 @@
+$small-break: 30em;
+$medium-break: 50em;
+
+@mixin small(){
+  @media screen and (max-width: $small-break) {
+    @content;
+  }
+}
+@mixin medium-large(){
+  @media screen and (min-width: 50em) {
+    @content;
+  }
+}
+
+.post-avatars{
+  .post-commenters{
+    border-left: none;
+    padding-left: none;
+  }
+}
+.post-shares{
+  text-align: center;
+  .shares-count{
+    @include small{
+      font-size: 18px;
+    }
+    @include medium-large{
+      font-size: 20px;
+    }
+    font-weight: bold;
+    line-height: 1;
+  }
+}
+.shares-1{
+  color: #c9c9c9;
+}
+.shares-2{
+  color: #a9c3a7;
+}
+.shares-3{
+  color: #78a976;
+}
+.shares-4{
+  color: #5eb05a;
+}
+.shares-5{
+  color: #0A9600; // main TC green color
+}
+.shares-6{
+  color: #f6d000;
+}
+.shares-7{
+  color: #f47300;
+}
+
+.search-field{
+border: 1px solid rgba(0,0,0,0.2) !important;
+}
+
+
+.post-body{
+  overflow: hidden;
+  p, ul, ol{
+    @include small{
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    @include medium-large{
+      font-size: 18px;
+      line-height: 1.7;
+    }
+  }
+  p img{
+    @include small{
+      margin-bottom: 10px;
+    }
+    @include medium-large{
+      float: left;
+      max-width: 460px;
+      margin-right: 20px;
+    }
+  }
+  div{
+    display: none; // hide the stupid feedburner links
+  }
+}
+.about{
+  max-width: 700px;
+  margin: 0 auto;
+  @include medium-large{
+    padding: 40px;
+  }
+}
+
+.tagline{
+  text-align: center;
+  margin: 30px 0 20px 0;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  font-size: 19px;
+  font-weight: normal;
+  span{
+    position: relative;
+    display: inline-block;
+    background: #EEEEEE;
+    margin: 0 auto;
+    z-index: 100;
+    padding: 0 15px;
+  }
+  &:after{
+    position: absolute;
+    content: " ";
+    display: block;
+    top: 50%;
+    left: 0px;
+    height: 1px;
+    background: rgba(0,0,0,0.2);
+    width: 100%;
+    z-index: 10;
+  }
+}
+.at-sep, .at-pwd-form, #at-facebook{
+  display:none !important;
+}
+
+.toggle-actions-link{
+  display: none !important;
+}
+.posts-day-heading{
+  @include small{
+    text-align: center;
+  }
+}

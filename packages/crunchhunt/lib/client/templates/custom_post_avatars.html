@@ -1,0 +1,11 @@
+<template name="customPostAvatars">
+  {{#if firstFourCommenters}}
+    <div class="post-commenters">
+    {{#each firstFourCommenters}}
+      <a href="{{profileUrl this}}" class="avatar-link avatar-small commenter-avatar">
+        {{> avatar userId=this shape="circle"}}
+      </a>
+    {{/each}}
+    </div>
+  {{/if}}
+</template>
