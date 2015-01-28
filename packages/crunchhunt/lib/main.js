@@ -16,7 +16,7 @@ postModules = _.reject(postModules, function (item){
 // add postShares post module
 postModules.push({
   template: 'customPostShares',
-  order: 0
+  order: 5
 });
 
 // remove post author
