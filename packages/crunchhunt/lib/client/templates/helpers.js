@@ -1,10 +1,7 @@
 Meteor.startup(function () {
 
   Template[getTemplate('customPostShares')].helpers({
-    oneBasedRank: function () {
-      if(typeof this.rank !== 'undefined')
-        return this.rank + 1;
-    },
+
     sharesClass: function () {
       var s = this.shares;
       // var array = [300, 500, 1000, 2000, 4000]
