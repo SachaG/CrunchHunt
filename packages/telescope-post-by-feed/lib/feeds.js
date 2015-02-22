@@ -2,6 +2,41 @@ var feedSchema = new SimpleSchema({
   url: {
     type: String,
     regEx: SimpleSchema.RegEx.Url
+  },
+  userId: {
+    type: String,
+    label: 'feedUser',
+    autoform: {
+      instructions: 'Posts will be assigned to this user.',
+      options: function () {
+        var users = Meteor.users.find().map(function (user) {
+          return {
+            value: user._id,
+            label: getDisplayName(user)
+          }  
+        });
+        return users;
+      }
+    }
+  },
+   categories: {
+    type: [String],
+    label: 'categories',
+    optional: true,
+    autoform: {
+      instructions: 'Posts will be assigned to this category.',
+      noselect: true,
+      editable: true,
+      options: function () {
+          var categories = Categories.find().map(function (category) {
+            return {
+              value: category._id,
+              label: category.name
+            }  
+        });
+        return categories;
+      }
+    }
   }
 });
 

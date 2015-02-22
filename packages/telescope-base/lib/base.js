@@ -48,7 +48,7 @@ primaryNav = [
 
 secondaryNav = [
   {
-    template: 'userMenu', 
+    template: 'userMenu',
     order: 10
   },
   {
@@ -185,14 +185,20 @@ heroModules = [];
 
 footerModules = [];
 
+threadModules = [];
+
 postModules = [
   {
-    template: 'postUpvote',
+    template: 'postRank',
     order: 1
   },
   {
+    template: 'postUpvote',
+    order: 10
+  },
+  {
     template: 'postContent',
-    order: 5
+    order: 20
   },
   {
     template: 'postAvatars',
@@ -241,6 +247,8 @@ postMeta = [
 ]
 // ------------------------------ Callbacks ------------------------------ //
 
+postClassCallbacks = [];
+
 postSubmitClientCallbacks = [];
 postSubmitMethodCallbacks = [];
 postAfterSubmitMethodCallbacks = []; // runs on server only in a timeout
@@ -248,6 +256,10 @@ postAfterSubmitMethodCallbacks = []; // runs on server only in a timeout
 postEditClientCallbacks = []; // loops over post object
 postEditMethodCallbacks = []; // loops over modifier (i.e. "{$set: {foo: bar}}") object
 postAfterEditMethodCallbacks = []; // loops over modifier object
+
+postApproveCallbacks = [];
+
+commentClassCallbacks = [];
 
 commentSubmitRenderedCallbacks = [];
 commentSubmitClientCallbacks = [];
@@ -263,6 +275,9 @@ userEditRenderedCallbacks = [];
 userEditClientCallbacks = [];
 userCreatedCallbacks = [];
 userProfileCompleteChecks = [];
+
+upvoteCallbacks = [];
+downvoteCallbacks = [];
 
 // ------------------------------------- User Profiles -------------------------------- //
 
