@@ -44,7 +44,7 @@ var sharesProperty = {
 addToPostSchema.push(sharesProperty);
 
 // override single day view to rank by shares instead of score
-viewParameters.digest = function (terms) {
+viewParameters.singleday = function (terms) {
   return {
     find: {
       postedAt: {
