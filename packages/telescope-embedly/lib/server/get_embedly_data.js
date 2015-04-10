@@ -1,9 +1,9 @@
 getEmbedlyData = function (url) {
   var data = {}
   var extractBase = 'http://api.embed.ly/1/extract';
-  var embedlyKey = getSetting('embedlyKey');
-  var thumbnailWidth = getSetting('thumbnailWidth', 200);
-  var thumbnailHeight = getSetting('thumbnailHeight', 125);
+  var embedlyKey = Settings.get('embedlyKey');
+  var thumbnailWidth = Settings.get('thumbnailWidth', 200);
+  var thumbnailHeight = Settings.get('thumbnailHeight', 125);
 
   if(!embedlyKey) {
     // fail silently to still let the post be submitted as usual
@@ -12,7 +12,7 @@ getEmbedlyData = function (url) {
   }
 
   try {
-    
+
     var result = Meteor.http.get(extractBase, {
       params: {
         key: embedlyKey,
@@ -76,7 +76,10 @@ var addMediaAfterSubmit = function (post) {
         set.media = data.media;
       }
     }
-    Posts.update(post._id, {$set: set});
+    // make sure set object is not empty (Embedly call could have failed)
+    if(!_.isEmpty(set)) {
+      Posts.update(post._id, {$set: set});
+    }
   }
   return post;
 }
@@ -103,7 +106,7 @@ Meteor.methods({
     return getEmbedlyData(url);
   },
   embedlyKeyExists: function () {
-    return !!getSetting('embedlyKey');
+    return !!Settings.get('embedlyKey');
   },
   regenerateEmbedlyData: function (post) {
     if (can.edit(Meteor.user(), post)) {

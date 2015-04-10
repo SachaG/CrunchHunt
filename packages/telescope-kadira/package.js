@@ -8,10 +8,11 @@ Package.onUse(function (api) {
 
   api.use([
     'templating',
-    'telescope-lib', 
+    'telescope-lib',
     'telescope-base',
+    'telescope-settings',
     'tap:i18n',
-    'meteorhacks:kadira@2.17.2'
+    'meteorhacks:kadira@2.20.1'
   ], ['client', 'server']);
 
   api.add_files([

@@ -57,26 +57,3 @@ viewParameters.singleday = function (terms) {
     }
   };
 }
-
-// create route for About page
-Meteor.startup(function () {
-  Router.map(function() {
-    this.route('about', {
-      path: '/about',
-      template: getTemplate('aboutPage')
-    });
-  });
-});
-
-// Pushing about link to nav:
-primaryNav.push({
-  template: 'aboutLink',
-  order: 0
-});
-
-// Add tagline template to hero zone
-
-heroModules.push({
-  template: 'tagline',
-  order: 0
-});

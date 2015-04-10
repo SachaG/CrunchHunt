@@ -3,23 +3,30 @@ var htmlToText = Npm.require('html-to-text');
 scheduleCampaign = function (campaign, isTest) {
   var isTest = typeof isTest === 'undefined' ? false : isTest;
 
-  var apiKey = getSetting('mailChimpAPIKey');
-  var listId = getSetting('mailChimpListId');
+  var apiKey = Settings.get('mailChimpAPIKey');
+  var listId = Settings.get('mailChimpListId');
 
   if(!!apiKey && !!listId){
+
+		var wordCount = 15;
+		var subject = campaign.subject;
+		while (subject.length >= 150){
+			subject = trimWords(subject, wordCount);
+			wordCount--;
+		}
 
     try {
 
       var api = new MailChimp(apiKey);
       var text = htmlToText.fromString(campaign.html, {wordwrap: 130});
-      var defaultEmail = getSetting('defaultEmail');
+      var defaultEmail = Settings.get('defaultEmail');
       var campaignOptions = {
         type: 'regular',
         options: {
           list_id: listId,
-          subject: campaign.subject,
+          subject: subject,
           from_email: defaultEmail,
-          from_name: getSetting('title')+ ' Top Posts',
+          from_name: Settings.get('title')+ ' Top Posts',
         },
         content: {
           html: campaign.html,
@@ -30,45 +37,45 @@ scheduleCampaign = function (campaign, isTest) {
       console.log( '// Creating campaign…');
 
       // create campaign
-      var campaign = api.call( 'campaigns', 'create', campaignOptions);
-      
+      var mailchimpCampaign = api.call( 'campaigns', 'create', campaignOptions);
+
       console.log( '// Campaign created');
       // console.log(campaign)
 
       var scheduledTime = moment().utcOffset(0).add(1, 'hours').format("YYYY-MM-DD HH:mm:ss");
 
       var scheduleOptions = {
-        cid: campaign.id,
+        cid: mailchimpCampaign.id,
         schedule_time: scheduledTime
       };
 
       // schedule campaign
       var schedule = api.call('campaigns', 'schedule', scheduleOptions);
-      
+
       console.log('// Campaign scheduled for '+scheduledTime);
       // console.log(schedule)
 
       // if this is not a test, mark posts as sent
       if (!isTest)
-        Posts.update({_id: {$in: campaign.postIds}}, {$set: {scheduledAt: new Date()}}, {multi: true})
+        var updated = Posts.update({_id: {$in: campaign.postIds}}, {$set: {scheduledAt: new Date()}}, {multi: true})
 
       // send confirmation email
       var confirmationHtml = getEmailTemplate('emailDigestConfirmation')({
         time: scheduledTime,
-        newsletterLink: campaign.archive_url,
-        subject: campaign.subject
+        newsletterLink: mailchimpCampaign.archive_url,
+        subject: subject
       });
       sendEmail(defaultEmail, 'Newsletter scheduled', buildEmailTemplate(confirmationHtml));
 
     } catch (error) {
       console.log(error);
     }
-    return campaign.subject;
+    return subject;
   }
 }
 
 addToMailChimpList = function(userOrEmail, confirm, done){
-  
+
   var user, email;
 
   var confirm = (typeof confirm === 'undefined') ? false : confirm // default to no confirmation
@@ -84,8 +91,8 @@ addToMailChimpList = function(userOrEmail, confirm, done){
       throw 'User must have an email address';
   }
 
-  var apiKey = getSetting('mailChimpAPIKey');
-  var listId = getSetting('mailChimpListId');
+  var apiKey = Settings.get('mailChimpAPIKey');
+  var listId = Settings.get('mailChimpListId');
 
   // add a user to a MailChimp list.
   // called when a new user is created, or when an existing user fills in their email
@@ -110,7 +117,7 @@ addToMailChimpList = function(userOrEmail, confirm, done){
         setUserSetting('subscribedToNewsletter', true, user);
 
       console.log("// User subscribed");
-      
+
       return subscribe;
 
     } catch (error) {
