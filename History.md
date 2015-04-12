@@ -1,3 +1,73 @@
+## v0.15.1 “PageScope”
+
+* Settings now have their own `telescope-settings` package (thanks @delgermurun!).
+* Swedish translation (thanks @Alekzanther!)
+* Various fixes (thanks @azizur, @ndarilek, @kai101, @saimeunt, @Kikobeats!).
+* Added `telescope-pages` module for managing static pages. 
+
+## v0.15 “SideScope”
+
+#### Layout
+
+* Added new `postListTop` zone that only appears on post lists. 
+* Now showing tagline on every post list. 
+* Added the Side Nav layout.
+* New Admin menu layout.
+
+#### Settings
+
+* Added the Post Views setting.
+* Changed color settings names.
+* Added field for optional category image (thanks @dtsepelev!).
+
+#### SEO
+
+* Added `telescope-sitemap` package (thanks @yourcelf!).
+* Added improved SEO support (thanks @yourcelf!).
+* Added field for SEO site image.
+
+#### Other
+
+* Improved performance when loading comments for long threads (thanks @dandv!).
+* Usernames are now case and space insensitive. `John Smith`, `JohnSmith`, and `johnsmith` are now all considered to be the same username (thanks @splendido!). 
+* Now using `feedparser` instead of `htmlparser2` to parse RSS feeds (thanks @delgermurun!).
+* Now supporting RSS categories (thanks @delgermurun).
+* Refactored dropdowns into menu components.
+* New `{{{icon}}}` helper for icons, using FontAwesome.
+* New accent color customization API. 
+* Fixed various bugs (thanks @webyak, @yourcelf, @ywang28, @delgermurun!).
+* Now publishing upvoters and downvoters on single post page. 
+
+#### Internationalization
+
+* Added Arabic translation (thanks @nwabdou85!).
+* Added missing translations in Brazilian Portuguese (thanks @alanmeira!).
+* Improved French translation (thanks @klamzo!).
+* Romanian translation (thanks @razvansky!).
+* Added Dutch translation (thanks @reneras!).
+
+## v0.14.3 “TableScope”
+
+* Implemented Reactive Table for the Users dashboard (thanks @jshimko!).
+* Upgraded Herald package (thanks @kestanous!).
+* Upgraded Avatar package (thanks @bengott!).
+* Upgraded Autoform package.
+* Added Greek translation (thanks @portokallidis!).
+* Improved Spanish translation (thanks @brayancruces!).
+* Added new callbacks for upvoting and downvoting (thanks @Baxter900 !).
+* OP comments now get the `author-comment` CSS class.
+
+## v0.14.2 “FaviconScope”
+
+* Added settings for auth methods.
+* Added setting for external fonts.
+* Use site tagline as homepage title.
+* Make favicon customizable.
+* Making webfont customizable. To get previous font back, use: `https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic`.
+* Fix juice issue.
+* Non-admins should not be able to access rejected posts.
+* Bulgarian translation (thanks @durrrr91!)
+
 ## v0.14.1 “TaglineScope”
 
 * Fix double notification bug. 

@@ -5,19 +5,24 @@ Package.describe({
   git: 'https://github.com/TelescopeJS/Telescope-Module-Embedly.git'
 });
 
-Package.onUse( function(api) {  
+Package.onUse( function(api) {
 
   api.versionsFrom("METEOR@0.9.0");
 
   api.use([
-    'telescope-lib', 
+    'telescope-lib',
     'telescope-base',
+    'telescope-settings',
     'aldeed:autoform',
     'tap:i18n',
     'fourseven:scss',
     'templating',
     'http'
   ]);
+
+  api.use([
+    'telescope-messages'
+  ], 'client');
 
   api.add_files([
     'package-tap.i18n',
@@ -29,10 +34,10 @@ Package.onUse( function(api) {
   ], ['server']);
 
   api.add_files([
-    'lib/client/autoform-postthumbnail.html', 
-    'lib/client/autoform-postthumbnail.js', 
-    'lib/client/post_thumbnail.html', 
-    'lib/client/post_thumbnail.js', 
+    'lib/client/autoform-postthumbnail.html',
+    'lib/client/autoform-postthumbnail.js',
+    'lib/client/post_thumbnail.html',
+    'lib/client/post_thumbnail.js',
     'lib/client/post_thumbnail.scss',
     'lib/client/post_video.html',
     'lib/client/post_video.js'

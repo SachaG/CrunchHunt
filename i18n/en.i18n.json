@@ -6,6 +6,7 @@
   "new": "New",
   "best": "Best",
   "digest": "Digest",
+  "scheduled": "Scheduled",
   "users": "Users",
   "settings": "Settings",
   "admin": "Admin",
@@ -15,12 +16,15 @@
   "my_account": "My Account",
   "view_profile": "View Profile",
   "edit_account": "Edit Account",
-
+  "view_your_profile": "View your profile",
+  "edit_your_profile": "Edit your profile",
+  
   //Main
   "new_posts": "New Posts",
 
   // Settings Schema
   "title": "Title",
+  "description": "Description",
   "siteUrl": "Site URL",
   "tagline": "Tagline",
   "requireViewInvite": "Require Invite to View",
@@ -52,7 +56,14 @@
   "emailFooter": "Email Footer",
   "notes": "Notes",
   "debug": "Debug Mode",
-
+  "fontUrl": "Font URL",
+  "fontFamily": "Font Family",
+  "authMethods": "Authentication Methods",
+  "faviconUrl": "Favicon URL",
+  "mailURL": "MailURL",
+  "postsLayout": "Posts Layout",
+  "siteImage": "Site Image",
+  
   // Settings Fieldsets
   "general": "General",
   "invites": "Invites",
@@ -64,6 +75,13 @@
   "extras": "Extras",
   "colors": "Colors",
   "integrations": "Integrations",
+  "accentColor": "Accent Color",
+  "accentContrastColor": "Accent Contrast Color",
+  "secondaryColor": "Secondary Color",
+  "secondaryContrastColor": "Secondary Contrast Color",
+  "postViews": "Post Views",
+  "navLayout": "Navigation Layout",
+  "mailUrl": "Mail URL",
 
   // Settings Help Text
 
@@ -103,6 +121,7 @@
   "edit": "Edit",
   "reply": "Reply",
   "no_comments": "No comments.",
+  "please_sign_in_to_reply": "Please sign in to reply",
 
   //Errors
   "you_are_already_logged_in": "You are already logged in",
@@ -172,6 +191,7 @@
   "display_name": "Display Name",
   "email": "Email",
   "bio": "Bio",
+  "city": "City",
   "twitter_username": "Twitter Username",
   "github_username": "GitHub Username",
   "site_url" : "Site URL",
@@ -255,8 +275,6 @@
   "please_fill_in_a_title": "Please fill in a title",
   "seconds_before_posting_again": " seconds before posting again",
   "upvoted": "Upvoted",
-  "posted_date": "Posted Date",
-  "posted_time": "Posted Time",
   "posted_date": "Posted Date",
   "posted_time": "Posted Time",
   "profile": "Profile",

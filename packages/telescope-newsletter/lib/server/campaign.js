@@ -3,11 +3,11 @@ defaultPosts = 5;
 
 getCampaignPosts = function (postsCount) {
 
-  var newsletterFrequency = getSetting('newsletterFrequency', defaultFrequency);
+  var newsletterFrequency = Settings.get('newsletterFrequency', defaultFrequency);
 
   // look for last scheduled campaign in the database
   var lastCampaign = SyncedCron._collection.findOne({name: 'Schedule newsletter'}, {sort: {finishedAt: -1}, limit: 1});
-  
+
   // if there is a last campaign use its date, else default to posts from the last 7 days
   var lastWeek = moment().subtract(7, 'days').toDate();
   var after = (typeof lastCampaign != 'undefined') ? lastCampaign.finishedAt : lastWeek
@@ -43,7 +43,7 @@ buildCampaign = function (postsArray) {
 
     if (post.body)
       properties.body = marked(trimWords(post.body, 20)).replace('<p>', '').replace('</p>', ''); // remove p tags
-    
+
     if(post.url)
       properties.domain = getDomain(post.url)
 
@@ -52,24 +52,26 @@ buildCampaign = function (postsArray) {
 
   // 2. Wrap posts HTML in digest template
   var digestHTML = getEmailTemplate('emailDigest')({
-    siteName: getSetting('title'),
+    siteName: Settings.get('title'),
     date: moment().format("dddd, MMMM Do YYYY"),
     content: postsHTML
   });
 
-  // 3. wrap digest HTML in email wrapper tempalte
+  // 3. wrap digest HTML in email wrapper template
   var emailHTML = buildEmailTemplate(digestHTML);
 
-  return {
+  var campaign = {
     postIds: _.pluck(postsArray, '_id'),
     subject: trimWords(subject, 15),
     html: emailHTML
   }
+
+  return campaign
 }
 
 scheduleNextCampaign = function (isTest) {
   var isTest = typeof isTest === 'undefined' ? false : isTest;
-  var posts = getCampaignPosts(getSetting('postsPerNewsletter', defaultPosts));
+  var posts = getCampaignPosts(Settings.get('postsPerNewsletter', defaultPosts));
   if(!!posts.length){
     return scheduleCampaign(buildCampaign(posts), isTest);
   }else{
@@ -79,6 +81,10 @@ scheduleNextCampaign = function (isTest) {
 }
 
 Meteor.methods({
+  sendCampaign: function () {
+    if(isAdminById(this.userId))
+      return scheduleNextCampaign(false);
+  },
   testCampaign: function () {
     if(isAdminById(this.userId))
       return scheduleNextCampaign(true);

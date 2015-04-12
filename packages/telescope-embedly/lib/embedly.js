@@ -2,7 +2,6 @@ var thumbnailProperty = {
   propertyName: 'thumbnailUrl',
   propertySchema: {
     type: String,
-    label: 'thumbnail',
     optional: true,
     autoform: {
       editable: true,
@@ -27,7 +26,7 @@ var mediaProperty = {
 addToPostSchema.push(mediaProperty);
 
 postThumbnail.push({
-  template: 'postThumbnail', 
+  template: 'postThumbnail',
   order: 15
 });
 
@@ -42,7 +41,7 @@ var embedlyKeyProperty = {
     }
   }
 }
-addToSettingsSchema.push(embedlyKeyProperty);
+Settings.addToSchema(embedlyKeyProperty);
 
 var thumbnailWidthProperty = {
   propertyName: 'thumbnailWidth',
@@ -54,7 +53,7 @@ var thumbnailWidthProperty = {
     }
   }
 }
-addToSettingsSchema.push(thumbnailWidthProperty);
+Settings.addToSchema(thumbnailWidthProperty);
 
 var thumbnailHeightProperty = {
   propertyName: 'thumbnailHeight',
@@ -66,7 +65,7 @@ var thumbnailHeightProperty = {
     }
   }
 }
-addToSettingsSchema.push(thumbnailHeightProperty);
+Settings.addToSchema(thumbnailHeightProperty);
 
 // add callback that adds "has-thumbnail" or "no-thumbnail" CSS classes
 postClassCallbacks.push(function (post, postClass){
