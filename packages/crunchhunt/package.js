@@ -50,8 +50,6 @@ Package.onUse(function (api) {
 
   // both
 
-  api.addFiles('content/about.md', ['client', 'server'], {isAsset: true});
-
   api.add_files([
     'lib/main.js',
   ], ['client', 'server']);
@@ -59,9 +57,6 @@ Package.onUse(function (api) {
   // client
 
   api.add_files([
-    'lib/client/templates/about_link.html',
-    'lib/client/templates/about_page.html',
-    'lib/client/templates/tagline.html',
     'lib/client/templates/custom_post_info.html',
     'lib/client/templates/custom_post_avatars.html',
     'lib/client/templates/custom_post_shares.html',

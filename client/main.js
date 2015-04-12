@@ -40,3 +40,7 @@ Meteor.startup(function() {
   SEO.config(seoProperties);
 
 });
+
+_.each(templates, function (replacement, original) {
+  Template[replacement].replaces(original);
+});

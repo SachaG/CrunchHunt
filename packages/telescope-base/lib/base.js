@@ -387,7 +387,8 @@ templates = {}
 
 getTemplate = function (name) {
   // if template has been overwritten, return this; else return template name
-  return !!templates[name] ? templates[name] : name;
+  return name;
+  // return !!templates[name] ? templates[name] : name;
 };
 
 // ------------------------------ Theme Settings ------------------------------ //

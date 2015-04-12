@@ -12,9 +12,9 @@ getShares = function (posts) {
     var year = urlArray[3];
     var month = urlArray[4];
     var day = urlArray[5];
-    var slug = urlArray[6];
-    var apiUrl = "https://www.kimonolabs.com/api/2i8phbko?apikey=4udcxJD3BEQyD25sOZ9QXN0Sb6Q4OMrr&kimpath1="+year+"&kimpath2="+month+"&kimpath3="+day+"&kimpath4="+slug
-    
+    var slug = urlArray[6];    
+    var apiUrl = "https://www.kimonolabs.com/api/ondemand/2i8phbko?apikey=4udcxJD3BEQyD25sOZ9QXN0Sb6Q4OMrr&kimpath1="+year+"&kimpath2="+month+"&kimpath3="+day+"&kimpath4="+slug;
+
     try {
       var timestamp = moment();
 
